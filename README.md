@@ -1,5 +1,6 @@
 # Federated-Bayesian-Optimization
-## This repository contains the experimental data and code corresponding to the Federated Bayesian Optimization method presented in the paper "An Intelligent Distributed Chemical Twin System for Collaborative Material Discovery".
+## Introduction
+This repository contains the experimental data and code corresponding to the Federated Bayesian Optimization method presented in the paper "An Intelligent Distributed Chemical Twin System for Collaborative Material Discovery".
 - The data folder stores the simulated experimental data used in the paper.
 - SingleBO.py implements the single-node Bayesian Optimization. The results of running this file will be saved in the SingleResult folder. Experimental settings can be modified by adjusting the parameters in the main function, with specific explanations as follows:
   - datafile: Path to the data file.
@@ -16,10 +17,11 @@
 
 ## Reprodcue SingleBO & FedBO
 ```bash
-git clone
+git clone https://github.com/pic-ai-robotic-chemistry/Federated-Bayesian-Optimization.git
+cd pic-ai-robotic-chemistry/Federated-Bayesian-Optimization
 conda env create -f environment.yml
 conda activate fedbo
-cd Federated-Bayesian-Optimization
+
 python SingleBO.py
 python FedBOv6.py
 ```
