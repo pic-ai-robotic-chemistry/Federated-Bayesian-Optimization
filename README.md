@@ -15,11 +15,11 @@
   - maxrounds: Maximum number of recommended attempts per experimental round.（The default settings will execute directly until all feasible combinations have been recommended.）
 
 ## Reprodcue SingleBO & FedBO
-'''bash
+```bash
 git clone
 conda env create -f environment.yml
 conda activate fedbo
 cd Federated-Bayesian-Optimization
 python SingleBO.py
 python FedBOv6.py
-'''
+```
