@@ -14,6 +14,7 @@ This repository contains the experimental data and code corresponding to the Fed
   - filepath: Path to all data files.
   - input_datapath: Path to the fixed initialized data file.
   - maxrounds: Maximum number of recommended attempts per experimental round.（The default settings will execute directly until all feasible combinations have been recommended.）
+- plot.py is used to draw intuitive diagrams of the optimization path, and the path to the result folder must be specified.
 
 ## Reprodcue SingleBO & FedBO
 ```bash
