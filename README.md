@@ -18,7 +18,7 @@ This repository contains the experimental data and code corresponding to the Fed
 ## Reprodcue SingleBO & FedBO
 ```bash
 git clone https://github.com/pic-ai-robotic-chemistry/Federated-Bayesian-Optimization.git
-cd pic-ai-robotic-chemistry/Federated-Bayesian-Optimization
+cd Federated-Bayesian-Optimization
 conda env create -f environment.yml
 conda activate fedbo
 
