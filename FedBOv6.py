@@ -1,5 +1,4 @@
 #全局推荐一个去替换掉在全局模型下表现最差的那个本地点
-#因为这样的全局推荐总是最高的，可以尝试把全局改成和本地一致的优化器，这样应该就有随机性了，但是这样评估还需要一个全局拟合的estimator
 import pandas as pd
 import numpy as np
 from sklearn.utils import shuffle
@@ -73,7 +72,7 @@ def Load_fixed_initdata(datapath,idx,X_pool,y_pool, atol=1e-8, rtol=1e-5):
 
 def Init_client(clients,num,global_X_pool,global_y_pool,datapath):
     global_X_pool, global_y_pool, X_init, y_init, inds = Load_fixed_initdata(datapath,num,global_X_pool, global_y_pool)
-    print("初始节点在所有数据中的编号：",inds)
+    #print("初始节点在所有数据中的编号：",inds)
     opt = create_optimizer()
     opt.tell(X_init, [-y for y in y_init])
     #print("INIT",[[round(x * 100,1) for x in sublist]+[100-sublist[-1]] for sublist in X_init],y_init)
@@ -97,7 +96,7 @@ def Single_per_client(clients,global_X_pool):
         estimator.fit(client["opt"].Xi, client["opt"].yi)
         # 预测
         pred_y = -estimator.predict([x_cand])[0]
-        print("Snigle_per_client, pred_y:", pred_y)
+        #print("Snigle_per_client, pred_y:", pred_y)
         candidates.append((x_cand, pred_y, idx))
     return candidates
 
@@ -120,7 +119,7 @@ def inducing_proposal(indlist, xpool, pro_num,candidates):
     m_full.optimize()
     y_pred, y_var = m_full.predict(xpool)
     idx = np.argmax(y_pred, axis = 0)   # 只有优化器minimize是用负值
-    print("total model predict:",y_pred[idx], max(y_pred))
+    #print("total model predict:",y_pred[idx], max(y_pred))
     
     ret = [(xpool[idx].reshape(-1), y_pred[idx].item(), idx.item())]
     new_cand = []
@@ -136,7 +135,7 @@ def inducing_proposal(indlist, xpool, pro_num,candidates):
     
 def aggregate_candidates_with_inducing(allcandidates):
     allcan = shuffle(allcandidates)
-    print("all candidate ",allcan)
+    #print("all candidate ",allcan)
     return allcan
 
 def Save_data_to_exc(output_path,rnd,endstep,clients,init_datanum):
@@ -146,7 +145,7 @@ def Save_data_to_exc(output_path,rnd,endstep,clients,init_datanum):
     print("SAVE to {}".format(filename))
     data = {}
     for i in range(len(clients)):
-        print("client{}:{}".format(i,clients[i]["y"]))
+        #print("client{}:{}".format(i,clients[i]["y"]))
         data[f'client_{i+1}'] = clients[i]["y"][init_datanum:]
     
     df = pd.DataFrame(data)
